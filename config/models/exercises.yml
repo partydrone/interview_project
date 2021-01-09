@@ -1,0 +1,45 @@
+welcome_to_brightline:
+  title: Welcome to Brightline
+  kind: video
+  url: https://hellobrightline.files.wordpress.com/2020/06/welcome_to_brightline.mov.mp4
+  duration_in_minutes: 2
+self_calming_through_relaxation_handout:
+  title: Self Calming Through Relaxation
+  kind: article
+  url: https://content.hellobrightline.com/wp-content/uploads/2020/11/Self-Calming-Through-Relaxation.pdf
+  duration_in_minutes: 2
+quick_calming_handout:
+  title: Quick Calming
+  kind: article
+  url: https://content.hellobrightline.com/wp-content/uploads/2020/10/Quick-Calming-Parent-Handout.pdf
+  duration_in_minutes: 2
+presenting_a_positive_self_handout:
+  title: Presenting a Postive Self
+  kind: article
+  url: https://content.hellobrightline.com/wp-content/uploads/2020/11/Plans-for-Coping-Parent-Handout.pdf
+  duration_in_minutes: 2
+daily_report_card_handout:
+  title: Daily Report Card
+  kind: article
+  url: https://content.hellobrightline.com/wp-content/uploads/2020/10/Quick-Calming-Parent-Handout.pdf
+  duration_in_minutes: 2
+my_rewards_chart_handout:
+  title: My Rewards Chart
+  kind: article
+  url: https://content.hellobrightline.com/wp-content/uploads/2020/12/MindNest-Rewards-Chart-Template.pdf
+  duration_in_minutes: 2
+tips_to_manage_language_delays:
+  title: 3 tips to help manage your child’s language delays
+  kind: article
+  url: https://content.hellobrightline.com/3-tips-to-help-manage-your-childs-language-delays/
+  duration_in_minutes: 2
+tips_to_reduce_frustration_with_speech:
+  title: 3 tips to help reduce your child's frustration with speech
+  kind: article
+  url: https://content.hellobrightline.com/3-tips-to-help-reduce-your-childs-frustration-with-speech/
+  duration_in_minutes: 2
+tips_to_manage_social_language_challenges:
+  title: 3 tips to help manage your child's social language challenges
+  kind: article
+  url: https://content.hellobrightline.com/3-tips-to-help-manage-your-childs-social-language-challenges/
+  duration_in_minutes: 2

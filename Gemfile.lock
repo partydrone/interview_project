@@ -62,6 +62,9 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    annotate (3.1.1)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     awesome_print (1.8.0)
     binding.repl (3.0.0)
     bootsnap (1.5.1)
@@ -263,6 +266,7 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  annotate
   awesome_print
   bootsnap (>= 1.4.4)
   byebug
