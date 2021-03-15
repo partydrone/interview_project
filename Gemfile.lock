@@ -100,6 +100,8 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
+    faker (2.17.0)
+      i18n (>= 1.6, < 2)
     fancy_irb (1.4.1)
       paint (>= 0.9, < 3.0)
       unicode-display_width (>= 1.1)
@@ -272,6 +274,7 @@ DEPENDENCIES
   byebug
   capybara
   factory_bot_rails
+  faker
   haml-rails
   irbtools
   listen (~> 3.3)

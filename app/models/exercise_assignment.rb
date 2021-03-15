@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: exercise_assignments
+#
+#  id           :bigint           not null, primary key
+#  completed_at :datetime
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  exercise_id  :string
+#  member_id    :bigint
+#
+# Indexes
+#
+#  index_exercise_assignments_on_member_id  (member_id)
+#
 class ExerciseAssignment < ApplicationRecord
   belongs_to :member
 
