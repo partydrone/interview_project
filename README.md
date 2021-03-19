@@ -1,24 +1,37 @@
 # README
-During this stage of the interview we want to evaluate your problem solving skills as well as you Ruby and Rails
 
-* Read the sections below and take a glance at the data model
-* Make sure you can run the applications and test suite of this project. (PostgreSQL is required)
+## Goal
 
-You shouldn't need to spend more than 15-20 minutes to prepare for the interview.
+This goal of this interview is to learn more about what it would be like to work together, especially:
+
+- How you break down complex problems
+- Your knowledge of web applications in general and Ruby on Rails in particular
+- What it's like to pair program with you for a couple hours, which is something we do relatively often as a team
+
+## How to prepare
+
+- Read the sections below and take a glance at the data model
+- Make sure you can run the applications and test suite of this project (PostgreSQL is required)
+
+If you have worked with Ruby on Rails recently, you shouldn't need to spend more than 15-20 minutes to prepare for the interview.
 
 ## Overview
-The rough plan is to build a RESTful API that allows our clinical team to assign homework to our members as needed. The API will use the data model described bellow.
+
+As part of treatment, our clinical team assigns "homework" to our members in the form of exercises.
+
+The rough plan is to build a RESTful API that allows our clinical team to assign homework to our members as needed. The API will use the data model described below.
 
 We'll spend the first few minutes of the interview answering any questions you might have about the data model. After that we are going to go over the specific requirements and then start implementing the API.
 
-Be prepared to account for some additional requirements that we'll introduce during the interview.
+We will introduce some new requirements during the interview, so be ready to alter or extend the data model below.
 
-## The Data Model
-At Brightline we assign homework to our `Member`s in the form of `ExerciseAssignment`s. Some important things that you should:
+## The data model
 
-* Each `ExerciseAssignment` is assigned to a `Member`
-* An `ExerciseAssignment` references an `Exercise`
-* An `Exercise` encodes common information of the homework that we assign - for example the URL of the handout / video / ...
-* A member can complete the same `Exercise` multiple times
-* An `ExerciseAssignment` can be completed by setting the `completed_at` date
-* We define `Exercise`s in a YAML file
+At Brightline we assign homework to a `Member` in the form of an `ExerciseAssignment`. Some important things that you should know:
+
+- Each `ExerciseAssignment` is assigned to a `Member`
+- An `ExerciseAssignment` references an `Exercise`
+- An `Exercise` encodes common information of the homework that we assign - for example the URL of the handout / video / ...
+- A member can complete the same `Exercise` multiple times
+- An `ExerciseAssignment` can be completed by setting the `completed_at` date
+- We define `Exercise`s in a YAML file
