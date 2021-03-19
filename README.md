@@ -15,6 +15,15 @@ This goal of this interview is to learn more about what it would be like to work
 
 If you have worked with Ruby on Rails recently, you shouldn't need to spend more than 15-20 minutes to prepare for the interview.
 
+## Running the project
+
+1. Make sure PostgreSQL is installed on your machine
+   - See `config/database.yml` for the default values and override if needed
+2. Run `bundle install` to install gem dependencies
+3. Run `rails db:setup` to create the dev/test databases and load the schema
+4. Run `rails server`
+5. Visit `localhost:3000` and ensure that you see the "You're on Rails!" page
+
 ## Overview
 
 As part of treatment, our clinical team assigns "homework" to our members in the form of exercises.
