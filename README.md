@@ -19,12 +19,10 @@ If you have worked with Ruby on Rails recently, you shouldn't need to spend more
 
 1. Make sure PostgreSQL is installed on your machine
    - See `config/database.yml` for the default values and override if needed
-2. Install `shared-mime-info` using Homebrew or your favorite package manager
-   - Note 2020-03-25 - This is a temporary workaround for a licensing issue in Rails. Thanks for bearing with us!
-3. Run `bundle install` to install gem dependencies
-4. Run `rails db:setup` to create the dev/test databases and load the schema
-5. Run `rails server`
-6. Visit `localhost:3000` and ensure that you see the "You're on Rails!" page
+2. Run `bundle install` to install gem dependencies
+3. Run `rails db:setup` to create the dev/test databases and load the schema
+4. Run `rails server`
+5. Visit `localhost:3000` and ensure that you see the "You're on Rails!" page
 
 ## Overview
 
