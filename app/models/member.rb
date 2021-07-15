@@ -11,4 +11,10 @@
 #
 class Member < ApplicationRecord
   has_many :exercise_assignments
+
+  validates_presence_of :first_name, :last_name, :date_of_birth
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
