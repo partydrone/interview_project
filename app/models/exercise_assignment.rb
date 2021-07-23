@@ -16,6 +16,8 @@
 class ExerciseAssignment < ApplicationRecord
   belongs_to :member
 
+  validates_presence_of :exercise_id, :member_id
+
   delegate :kind, :url, :title, to: :exercise
 
   def exercise_id
