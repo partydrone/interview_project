@@ -1,5 +1,5 @@
 class ExerciseAssignmentsController < ApplicationController
-  before_action :set_exercise_assignment, only: [:show, :destroy]
+  before_action :set_exercise_assignment, only: [:show, :destroy, :update]
 
   def index
     @exercise_assignments = ExerciseAssignment.all
@@ -21,6 +21,14 @@ class ExerciseAssignmentsController < ApplicationController
     end
   end
 
+  def update
+    if @exercise_assignment.update(exercise_assignment_params)
+      render json: @exercise_assignment
+    else
+      render json: @exercise_assignment.errors, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @exercise_assignment.destroy
   end
@@ -31,6 +39,6 @@ class ExerciseAssignmentsController < ApplicationController
     end
 
     def exercise_assignment_params
-      params.require(:exercise_assignment).permit(:exercise_id, :member_id)
+      params.require(:exercise_assignment).permit(:exercise_id, :member_id, data: {})
     end
 end
