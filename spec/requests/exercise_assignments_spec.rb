@@ -2,38 +2,38 @@ require 'rails_helper'
 
 RSpec.describe "/exercise_assignments", type: :request do
   describe "GET /index" do
-    let(:exercise_assignments) { FactoryBot.create_list(:exercise_assignment, 3) }
+    let!(:exercise_assignments) { FactoryBot.create_list(:exercise_assignment, 3) }
 
     it "renders a successful response" do
-      get exercise_assignments_url
+      get exercise_assignments_path
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
-    let(:exercise_assignment) { FactoryBot.create(:exercise_assignment) }
+    let!(:exercise_assignment) { FactoryBot.create(:exercise_assignment) }
 
     it "renders a successful response" do
-      get exercise_assignment_url(exercise_assignment)
+      get exercise_assignment_path(exercise_assignment)
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
-    let!(:member) { FactoryBot.create(:member) }
-    let!(:exercise_id) { Exercise.ids.sample }
+    let(:member) { FactoryBot.create(:member) }
+    let(:exercise_id) { Exercise.ids.sample }
 
     context "with valid parameters" do
       let(:params) { {exercise_assignment: { member_id: member.id, exercise_id: exercise_id }} }
 
       it "creates a new ExerciseAssignment" do
         expect {
-          post exercise_assignments_url, params: params
+          post exercise_assignments_path, params: params
         }.to change(ExerciseAssignment, :count).by(1)
       end
 
       it "renders a JSON response with the new exercise_assignment" do
-        post exercise_assignments_url, params: params
+        post exercise_assignments_path, params: params
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
@@ -44,15 +44,29 @@ RSpec.describe "/exercise_assignments", type: :request do
 
       it "does not create a new ExerciseAssignment" do
         expect {
-          post exercise_assignments_url, params: params
+          post exercise_assignments_path, params: params
         }.to change(ExerciseAssignment, :count).by(0)
       end
 
       it "renders a JSON response with errors for the new exercise_assignment" do
-        post exercise_assignments_url, params: params
+        post exercise_assignments_path, params: params
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
+    end
+  end
+
+  describe "PATCH /update" do
+    let(:member) { FactoryBot.create(:member) }
+    let!(:exercise_assignment) { FactoryBot.create(:exercise_assignment, :completed, data: {"calm_level_before" => "2", "calm_level_after" => "7"}) }
+    let(:params) { {exercise_assignment: {data: {"calm_level_before" => "8", "calm_level_after" => "4"} }} }
+
+    it "updates an existing ExerciseAssignment" do
+      expect {
+        patch exercise_assignment_path(exercise_assignment), params: params
+      }.to change { exercise_assignment.reload.data }
+            .from({"calm_level_before" => "2", "calm_level_after" => "7"})
+            .to ({"calm_level_before" => "8", "calm_level_after" => "4"})
     end
   end
 
@@ -61,7 +75,7 @@ RSpec.describe "/exercise_assignments", type: :request do
 
     it "destroys the requested exercise_assignment" do
       expect {
-        delete exercise_assignment_url(exercise_assignment)
+        delete exercise_assignment_path(exercise_assignment)
       }.to change(ExerciseAssignment, :count).by(-1)
     end
   end

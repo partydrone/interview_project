@@ -4,6 +4,7 @@
 #
 #  id           :bigint           not null, primary key
 #  completed_at :datetime
+#  data         :jsonb
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  exercise_id  :string

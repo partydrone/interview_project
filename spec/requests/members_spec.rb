@@ -8,7 +8,7 @@ RSpec.describe "/members", type: :request do
     let!(:members) { FactoryBot.create_list(:member, 2) }
 
     it "renders a successful response" do
-      get members_url
+      get members_path
       expect(response).to be_successful
     end
   end
@@ -17,7 +17,7 @@ RSpec.describe "/members", type: :request do
     let!(:member) { FactoryBot.create(:member) }
 
     it "renders a successful response" do
-      get member_url(member)
+      get member_path(member)
       expect(response).to be_successful
     end
   end
@@ -26,12 +26,12 @@ RSpec.describe "/members", type: :request do
     context "with valid parameters" do
       it "creates a new Member" do
         expect {
-          post members_url, params: { member: valid_attributes }
+          post members_path, params: { member: valid_attributes }
         }.to change(Member, :count).by(1)
       end
 
       it "renders a JSON response with the new member" do
-        post members_url, params: { member: valid_attributes }
+        post members_path, params: { member: valid_attributes }
         expect(response).to have_http_status(:created)
       end
     end
@@ -39,12 +39,12 @@ RSpec.describe "/members", type: :request do
     context "with invalid parameters" do
       it "does not create a new Member" do
         expect {
-          post members_url, params: { member: invalid_attributes }
+          post members_path, params: { member: invalid_attributes }
         }.to change(Member, :count).by(0)
       end
 
       it "renders a JSON response with errors for the new member" do
-        post members_url, params: { member: invalid_attributes }
+        post members_path, params: { member: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
 
         errors = JSON.parse(response.body)
@@ -61,14 +61,14 @@ RSpec.describe "/members", type: :request do
 
     context "with valid parameters" do
       it "updates the requested member" do
-        patch member_url(member), params: { member: valid_attributes }
+        patch member_path(member), params: { member: valid_attributes }
 
         expect(member.reload.full_name).to eq("Lara Croft")
       end
 
       it "renders a JSON response with the member" do
         member = Member.create! valid_attributes
-        patch member_url(member), params: { member: valid_attributes }
+        patch member_path(member), params: { member: valid_attributes }
 
         expect(response).to have_http_status(:ok)
 
@@ -80,7 +80,7 @@ RSpec.describe "/members", type: :request do
 
     context "with invalid parameters" do
       it "renders a JSON response with errors for the member" do
-        patch member_url(member), params: { member: invalid_attributes }
+        patch member_path(member), params: { member: invalid_attributes }
 
         expect(response).to have_http_status(:unprocessable_entity)
 
@@ -98,7 +98,7 @@ RSpec.describe "/members", type: :request do
 
     it "destroys the requested member" do
       expect {
-        delete member_url(member)
+        delete member_path(member)
       }.to change(Member, :count).by(-1)
     end
   end
