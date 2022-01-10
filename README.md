@@ -38,3 +38,24 @@ At Brightline we assign homework to a `Member` in the form of an `ExerciseAssign
 - A member can complete the same `Exercise` multiple times
 - An `ExerciseAssignment` can be completed by setting the `completed_at` date
 - We define `Exercise`s in a YAML file
+
+## How do Exercises work?
+
+We've omitted some lower-level details of Exercises that don't really apply to this scenario,
+such as a detailed UI. You can assume that ExerciseAssignments generally work as follows:
+
+1. A member logs into their account and sees a list of active assignments
+2. They select an assignment and are presented with a multi-step UI for completing it
+3. They fill out several fields and submit the assignment
+4. A Rails controller populates the `completed_at` and `data` columns for the relevant ExerciseAssignment
+
+As a specific example, here's how "Learning to Relax" might work:
+
+1. "Before we start - how are you feeling?" (slider from 1-10 where 1 = very stressed, 10 = very relaxed)
+2. Member completes a guided meditation exercise presented via video
+3. "How are you feeling now?" (slider from 1-10 again)
+
+Then the backend would persist `starting_feeling` and `ending_feeling` in the JSONB `data`
+column on ExerciseAssignment.
+
+Each exercise may collect unique data points, which is why it uses an unstructured JSONB column.
