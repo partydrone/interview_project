@@ -1,23 +1,14 @@
 class ExerciseAssignmentsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_exercise_assignment, only: [:show, :destroy, :update]
 
   def index
-    @exercise_assignments = ExerciseAssignment.all
+    @pagy, @exercise_assignments = pagy(ExerciseAssignment.all.order(created_at: :desc), items: 12)
 
-    render json: @exercise_assignments
-  end
-
-  def show
-    render json: @exercise_assignment
-  end
-
-  def create
-    @exercise_assignment = ExerciseAssignment.new(exercise_assignment_params)
-
-    if @exercise_assignment.save
-      render json: @exercise_assignment, status: :created, location: @exercise_assignment
-    else
-      render json: @exercise_assignment.errors, status: :unprocessable_entity
+    respond_to do |format|
+      format.html
+      format.json { render json: @exercise_assignments }
     end
   end
 
@@ -27,10 +18,6 @@ class ExerciseAssignmentsController < ApplicationController
     else
       render json: @exercise_assignment.errors, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    @exercise_assignment.destroy
   end
 
   private
