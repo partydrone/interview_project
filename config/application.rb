@@ -33,5 +33,15 @@ module InterviewProject
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+
+    # Set Redis as the back-end for the cache.
+    config.cache_store = :redis_cache_store, {
+      url: ENV.fetch("REDIS_URL", "redis://redis:6379/0"),
+      namespace: "cache"
+    }
   end
 end
